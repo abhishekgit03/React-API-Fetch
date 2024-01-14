@@ -2,7 +2,7 @@ import React,{useState,useEffect} from 'react'
 import {useGlobalContext } from '../context/context'
 
 function Stories() {
-    const {hits,nbPages,isloading,objectID} = useGlobalContext();
+    const {hits,nbPages,isloading,objectID,removePost} = useGlobalContext();
     if(isloading)
     {
       return(
