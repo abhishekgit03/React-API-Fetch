@@ -15,20 +15,17 @@ function Stories() {
     <>
       <div className="stories-div" key={objectID}>
       {hits.map((curPost) => {
-      const { title, author, objectID, url, num_comments } = curPost;
+      const { title, author, url, source,description,content} = curPost;
       return (
       <div className="card" key={objectID}>
-      <h2>{title}</h2>
+      <h2 style={{color:'black'}}>{title}</h2>
       <p>
-      By <span> {author}</span> | <span> {num_comments} </span>
-      comments
+      By <span> {author}</span> | <span> Source {source.id===null ? "unknown" : source.id} </span>
       </p>
+      <p style={{color:'black'}}>{description}</p>
       <div className="card-button">
       <a href={url} class="button-link" target="_blank">
       Read More
-      </a>
-      <a href="#" onClick={() => removePost(objectID)}>
-      Remove
       </a>
         </div>
       </div>

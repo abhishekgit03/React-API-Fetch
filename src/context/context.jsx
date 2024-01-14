@@ -5,12 +5,12 @@ const AppContext=createContext();  //context creation
 const initialState=
     {
         isLoading:true,
-        query:"HTML",
+        query:"Latest global news",
         nbPages:0,
         page:0,
         hits:[]
     }
-let apiurl="https://hn.algolia.com/api/v1/search?"
+let apiurl="https://newsapi.org/v2/everything?"
 
 //create a provider function
 const AppProvider =({children})=>
@@ -22,12 +22,12 @@ const AppProvider =({children})=>
         try{
             const res= await fetch(url);
             const data= await res.json();
-            console.log(data)
+            console.log(data.articles)
             dispatch({
                 type: "GET_STORIES",
                 payload:{
-                    hits:data.hits,
-                    nbPages:data.nbPages
+                    hits:data.articles,
+                    nbPages:data.totalResults
                 }
             })
         }
@@ -49,7 +49,7 @@ const AppProvider =({children})=>
 
     useEffect(()=>
     {
-       fetchApi(`${apiurl}query=${state.query}&page=${state.page}`);
+       fetchApi(`${apiurl}q=${state.query ==="" ? "Global news" : state.query}&?language=en&apiKey=617ba767057243cfa5aad12904e99502`);
     },[state.query]);
 
     return(
