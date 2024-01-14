@@ -15,12 +15,12 @@ function Stories() {
     <>
       <div className="stories-div" key={objectID}>
       {hits.map((curPost) => {
-      const { title, author, url, source,description,content} = curPost;
+      const { title,url, description,pubDate} = curPost;
       return (
       <div className="card" key={objectID}>
       <h2 style={{color:'black'}}>{title}</h2>
       <p>
-      By <span> {author}</span> | <span> Source {source.id===null ? "unknown" : source.id} </span>
+      Posted at: <span> {pubDate}</span> 
       </p>
       <p style={{color:'black'}}>{description}</p>
       <div className="card-button">

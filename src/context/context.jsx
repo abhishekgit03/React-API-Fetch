@@ -5,12 +5,12 @@ const AppContext=createContext();  //context creation
 const initialState=
     {
         isLoading:true,
-        query:"Latest global news",
+        query:"Latest",
         nbPages:0,
         page:0,
         hits:[]
     }
-let apiurl="https://newsapi.org/v2/everything?"
+let apiurl="https://newsapi.in/newsapi/search.php?key=MkbliPyW2idojivMlNfK3ILW46UIKn"
 
 //create a provider function
 const AppProvider =({children})=>
@@ -22,12 +22,12 @@ const AppProvider =({children})=>
         try{
             const res= await fetch(url);
             const data= await res.json();
-            console.log(data.articles)
+            console.log(data.News)
             dispatch({
                 type: "GET_STORIES",
                 payload:{
-                    hits:data.articles,
-                    nbPages:data.totalResults
+                    hits:data.News,
+                    nbPages:20
                 }
             })
         }
@@ -49,7 +49,9 @@ const AppProvider =({children})=>
 
     useEffect(()=>
     {
-       fetchApi(`${apiurl}q=${state.query ==="" ? "Global news" : state.query}&?language=en&apiKey=617ba767057243cfa5aad12904e99502`);
+        const url=`${apiurl}&q=${state.query ==="" ? "Globalnews" : state.query}`
+        console.log(url)
+       fetchApi(url);
     },[state.query]);
 
     return(
