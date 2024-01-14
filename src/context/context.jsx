@@ -5,7 +5,7 @@ const AppContext=createContext();  //context creation
 const initialState=
     {
         isLoading:true,
-        query:"Latest",
+        query:"Latest news",
         nbPages:0,
         page:0,
         hits:[]
