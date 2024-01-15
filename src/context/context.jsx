@@ -10,7 +10,7 @@ const initialState=
         page:0,
         hits:[]
     }
-let apiurl="https://newsapi.in/newsapi/search.php?key=MkbliPyW2idojivMlNfK3ILW46UIKn"
+let apiurl="https://newsapi.in/newsapi/search.php?key=wc9G2WNzaYELMAS8A2wNbGfHFM2xSl"
 
 //create a provider function
 const AppProvider =({children})=>
